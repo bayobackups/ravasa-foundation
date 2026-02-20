@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ravasa Foundation Gallery — Photos from our programs and activities across Uganda.">
+<title>Gallery – Ravasa Foundation</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.gallery-section { background: var(--off-white); }
+.gallery-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+.gf-btn { background: var(--white); border: 1.5px solid var(--border); border-radius: 50px; padding: 8px 22px; font-size: 0.84rem; font-weight: 600; color: var(--muted); cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+.gf-btn:hover, .gf-btn.active { background: var(--green-mid); border-color: var(--green-mid); color: var(--white); }
+
+.masonry { columns: 3; column-gap: 16px; }
+.masonry-item { break-inside: avoid; margin-bottom: 16px; border-radius: 16px; overflow: hidden; position: relative; cursor: pointer; }
+.masonry-item img { width: 100%; display: block; transition: transform 0.4s; }
+.masonry-item:hover img { transform: scale(1.04); }
+.masonry-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,31,20,0.85) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 20px; }
+.masonry-item:hover .masonry-overlay { opacity: 1; }
+.masonry-caption { color: var(--white); font-size: 0.88rem; font-weight: 500; line-height: 1.4; }
+
+/* Placeholder image blocks (since we can't use actual photos) */
+.photo-block { width: 100%; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-size: 2.5rem; color: var(--green-mid); font-weight: 700; }
+.photo-block.tall { aspect-ratio: 3/4; }
+.photo-block.wide { aspect-ratio: 16/9; }
+.photo-block span { font-size: 0.8rem; font-family: var(--font-body); color: var(--muted); font-weight: 400; text-align: center; padding: 0 12px; }
+
+/* LIGHTBOX */
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
+.lightbox.open { display: flex; }
+.lightbox-inner { max-width: 900px; width: 90%; text-align: center; }
+.lightbox-inner img { max-width: 100%; max-height: 80vh; border-radius: 12px; }
+.lightbox-close { position: absolute; top: 24px; right: 28px; color: white; font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; }
+.lightbox-caption { color: rgba(255,255,255,0.7); margin-top: 16px; font-size: 0.9rem; }
+
+/* CATEGORIES */
+.cat-section { background: var(--white); }
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 48px; }
+.cat-card { border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s; cursor: pointer; }
+.cat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+.cat-thumb { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+.cat-thumb-1 { background: linear-gradient(135deg, var(--green-pale), #c8f0d4); }
+.cat-thumb-2 { background: linear-gradient(135deg, #fff3cd, #ffeaa7); }
+.cat-thumb-3 { background: linear-gradient(135deg, #dfe6e9, #b2bec3); }
+.cat-thumb-4 { background: linear-gradient(135deg, #fd79a8, #fdcfe8); }
+.cat-thumb-5 { background: linear-gradient(135deg, #74b9ff, #dfe6fa); }
+.cat-thumb-6 { background: linear-gradient(135deg, #a29bfe, #e0dffe); }
+.cat-info { padding: 20px 24px; background: var(--white); }
+.cat-info h3 { font-family: var(--font-body); font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+.cat-info p { font-size: 0.82rem; color: var(--muted); }
+
+@media (max-width: 768px) { .masonry { columns: 2; } }
+@media (max-width: 480px) { .masonry { columns: 1; } }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,0.55)">Gallery</span></div>
+    <h1 class="anim-1">Gallery</h1>
+    <p class="anim-2">A visual journey through our work — from food distributions and skills training to community gatherings and environmental conservation efforts across Uganda.</p>
+  </div>
+</div>
+
+<!-- CATEGORY OVERVIEW -->
+<section class="cat-section">
+  <div class="reveal">
+    <span class="section-label">Browse By Category</span>
+    <h2 class="section-title">Our Activities in Pictures</h2>
+    <p class="section-sub">Every photo tells the story of real people whose lives have been touched by Ravasa Foundation's programs.</p>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card reveal">
+      <div class="cat-thumb cat-thumb-1">🍽️</div>
+      <div class="cat-info"><h3>Food Distributions</h3><p>Emergency food relief and nutrition programs across West Nile</p></div>
+    </div>
+    <div class="cat-card reveal reveal-delay-1">
+      <div class="cat-thumb cat-thumb-2">✂️</div>
+      <div class="cat-info"><h3>Skills Training</h3><p>Vocational training in hairdressing, tailoring, baking & more</p></div>
+    </div>
+    <div class="cat-card reveal reveal-delay-2">
+      <div class="cat-thumb cat-thumb-3">🌾</div>
+      <div class="cat-info"><h3>Agriculture Programs</h3><p>Sustainable farming, vegetable growing, and field activities</p></div>
+    </div>
+    <div class="cat-card reveal">
+      <div class="cat-thumb cat-thumb-4">👥</div>
+      <div class="cat-info"><h3>Community Events</h3><p>Community meetings, sensitization campaigns and gatherings</p></div>
+    </div>
+    <div class="cat-card reveal reveal-delay-1">
+      <div class="cat-thumb cat-thumb-5">🌿</div>
+      <div class="cat-info"><h3>Environmental Activities</h3><p>Tree planting, conservation campaigns, and environmental education</p></div>
+    </div>
+    <div class="cat-card reveal reveal-delay-2">
+      <div class="cat-thumb cat-thumb-6">📚</div>
+      <div class="cat-info"><h3>Education & Training</h3><p>Workshops, capacity building sessions, and youth programs</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GRID -->
+<section class="gallery-section">
+  <div class="reveal">
+    <span class="section-label">Photo Gallery</span>
+    <h2 class="section-title">Moments of Impact</h2>
+    <p class="section-sub">Captured moments from our programs, distributions, and community work across Uganda.</p>
+  </div>
+
+  <div class="gallery-filters reveal reveal-delay-1">
+    <button class="gf-btn active" onclick="filterGallery('all', this)">All Photos</button>
+    <button class="gf-btn" onclick="filterGallery('food', this)">Food Distributions</button>
+    <button class="gf-btn" onclick="filterGallery('skills', this)">Skills Training</button>
+    <button class="gf-btn" onclick="filterGallery('agriculture', this)">Agriculture</button>
+    <button class="gf-btn" onclick="filterGallery('community', this)">Community</button>
+    <button class="gf-btn" onclick="filterGallery('environment', this)">Environment</button>
+  </div>
+
+  <div class="masonry" id="gallery-grid">
+
+    <div class="masonry-item" data-cat="food">
+      <div class="photo-block" style="background: linear-gradient(135deg,#e8f5ec,#c8f0d4); aspect-ratio:4/3;">
+        🍽️<span>Food distribution event — beneficiaries receiving packages at Ravasa Foundation premises</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Emergency Food Distribution · Arua</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="food">
+      <div class="photo-block tall" style="background: linear-gradient(135deg,#d5f5e3,#a9dfbf);">
+        👨‍👩‍👧<span>Community members queuing for food packages at a distribution point</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Community Food Drive · West Nile</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="community">
+      <div class="photo-block" style="background: linear-gradient(135deg,#eaf4fb,#aed6f1);">
+        👥<span>Large community gathering for sensitization and awareness campaign</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Community Sensitization Event</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="food">
+      <div class="photo-block wide" style="background: linear-gradient(135deg,#fdf2e9,#fad7a0);">
+        🍚<span>Volunteer staff serving meals at a community feeding program</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Community Feeding Program</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="skills">
+      <div class="photo-block tall" style="background: linear-gradient(135deg,#fef9e7,#fde68a);">
+        ✂️<span>Women participating in tailoring and sewing skills training session</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Tailoring Skills Training · Bidi Bidi</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="agriculture">
+      <div class="photo-block" style="background: linear-gradient(135deg,#e9f7ef,#a9dfbf);">
+        🌱<span>Farmers trained in sustainable vegetable growing techniques</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Sustainable Agriculture Training</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="environment">
+      <div class="photo-block" style="background: linear-gradient(135deg,#d5f5e3,#82e0aa);">
+        🌳<span>Community tree planting and environmental conservation activity</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Tree Planting Campaign</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="food">
+      <div class="photo-block" style="background: linear-gradient(135deg,#fdedec,#f1948a);">
+        🎁<span>Beneficiaries posing with food packages received from Ravasa Foundation</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Food Package Distribution</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="community">
+      <div class="photo-block tall" style="background: linear-gradient(135deg,#f0e6ff,#c39bd3);">
+        🙌<span>Community mobilization and outreach session in West Nile</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Community Outreach</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="skills">
+      <div class="photo-block" style="background: linear-gradient(135deg,#fef5e4,#f9ca6b);">
+        💄<span>Women receiving hairdressing and beauty skills training</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Hairdressing Skills · Palorinya Settlement</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="agriculture">
+      <div class="photo-block wide" style="background: linear-gradient(135deg,#e8f8f5,#76d7c4);">
+        🥬<span>Women's group harvesting vegetables from their community garden</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Women's Vegetable Garden · Yumbe</div></div>
+    </div>
+
+    <div class="masonry-item" data-cat="food">
+      <div class="photo-block" style="background: linear-gradient(135deg,#eaf4fb,#7fb3d3);">
+        🛍️<span>Large-scale food distribution with rows of branded food bags laid out</span>
+      </div>
+      <div class="masonry-overlay"><div class="masonry-caption">Large-scale Food Distribution</div></div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top:48px;" class="reveal">
+    <p style="color:var(--muted); margin-bottom:20px; font-size:0.95rem;">Want to see more of our work? Follow us or contact us for more information.</p>
+    <a class="btn btn-outline" href="contact.html">Contact Us for More</a>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="main.js"></script>
+<script>
+renderNav('Gallery');
+renderFooter();
+
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.masonry-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

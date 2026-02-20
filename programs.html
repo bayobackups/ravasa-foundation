@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ravasa Foundation Programs — Agriculture, Education, Health, Skills Training, Entrepreneurship, and more.">
+<title>Our Programs – Ravasa Foundation</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.prog-filter { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+.filter-btn { background: var(--white); border: 1.5px solid var(--border); border-radius: 50px; padding: 8px 22px; font-size: 0.84rem; font-weight: 600; color: var(--muted); cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+.filter-btn:hover, .filter-btn.active { background: var(--green-mid); border-color: var(--green-mid); color: var(--white); }
+
+.programs-main { background: var(--off-white); }
+.prog-detail-grid { display: flex; flex-direction: column; gap: 56px; }
+.prog-detail {
+  background: var(--white); border-radius: 28px; overflow: hidden;
+  border: 1px solid var(--border); display: grid; grid-template-columns: 280px 1fr;
+}
+.prog-detail.reverse { direction: rtl; }
+.prog-detail.reverse > * { direction: ltr; }
+.prog-sidebar {
+  background: var(--green); padding: 48px 36px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+.prog-sidebar .big-icon { font-size: 3.5rem; }
+.prog-sidebar h2 { font-family: var(--font-brand); font-size: 1.6rem; color: var(--white); line-height: 1.2; }
+.prog-sidebar .tag { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; display: inline-block; }
+.prog-sidebar .stats { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 24px; }
+.prog-sidebar .stats strong { font-family: var(--font-brand); font-size: 2rem; color: var(--green-light); display: block; line-height: 1; }
+.prog-sidebar .stats span { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+.prog-body { padding: 48px; }
+.prog-body p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
+.prog-body h3 { font-family: var(--font-body); font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
+.activity-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.activity-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+.activity-list li::before { content: '→'; color: var(--green-mid); font-weight: 700; flex-shrink: 0; }
+
+/* OPM HIGHLIGHT */
+.opm-highlight { background: var(--green); margin: 0 6%; border-radius: 28px; padding: 64px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.opm-highlight h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white); }
+.opm-highlight p { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-top: 14px; }
+.opm-stats { display: flex; flex-direction: column; gap: 20px; }
+.opm-stat { background: rgba(255,255,255,0.1); border-radius: 16px; padding: 24px 28px; }
+.opm-stat strong { font-family: var(--font-brand); font-size: 2.5rem; color: var(--green-light); line-height: 1; display: block; }
+.opm-stat span { font-size: 0.84rem; color: rgba(255,255,255,0.65); margin-top: 4px; display: block; }
+
+@media (max-width: 900px) {
+  .prog-detail { grid-template-columns: 1fr; }
+  .prog-detail.reverse { direction: ltr; }
+  .opm-highlight { grid-template-columns: 1fr; margin: 0 5%; }
+}
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,0.55)">Programs</span></div>
+    <h1 class="anim-1">Our Programs<br>& Services</h1>
+    <p class="anim-2">Comprehensive, community-driven programming across eight critical sectors addressing the root causes of poverty, vulnerability, and underdevelopment in Uganda's West Nile region.</p>
+  </div>
+</div>
+
+<section class="programs-main">
+  <div class="prog-detail-grid">
+
+    <div class="prog-detail reveal">
+      <div class="prog-sidebar">
+        <div class="big-icon">🌾</div>
+        <span class="tag">Food Security</span>
+        <h2>Agriculture & Food Security</h2>
+        <div class="stats"><strong>120+</strong><span>Women in sustainable vegetable growing</span></div>
+      </div>
+      <div class="prog-body">
+        <p>Ravasa Foundation works with communities to promote sustainable agricultural practices that improve food security and generate income. We focus on capacity building for farmers — particularly women — in innovative techniques that increase productivity while protecting the environment.</p>
+        <p>With over six years of experience implementing projects supported by the Office of the Prime Minister, we have supported over 120 women to improve their livelihoods through sustainable vegetable growing and other agricultural practices.</p>
+        <h3>Key Activities</h3>
+        <ul class="activity-list">
+          <li>Training in innovative sustainable agriculture and livelihood techniques</li>
+          <li>Sustainable vegetable growing programs for women</li>
+          <li>Improved seeds and farming inputs distribution</li>
+          <li>Post-harvest handling and value addition training</li>
+          <li>Farmer group formation and cooperative development</li>
+          <li>Climate-smart agriculture sensitization</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prog-detail reverse reveal">
+      <div class="prog-sidebar">
+        <div class="big-icon">📚</div>
+        <span class="tag">Education</span>
+        <h2>Education & Sponsorships</h2>
+        <div class="stats"><strong>200+</strong><span>Youth supported through education programs</span></div>
+      </div>
+      <div class="prog-body">
+        <p>Education is the cornerstone of sustainable development. Ravasa Foundation supports access to quality education for vulnerable youth through career guidance, awareness campaigns, and direct sponsorships for students who cannot afford school fees.</p>
+        <p>We believe that every child deserves the opportunity to learn and grow, regardless of their economic background or refugee status. Our education programs work hand-in-hand with local schools and the community.</p>
+        <h3>Key Activities</h3>
+        <ul class="activity-list">
+          <li>Career guidance and mentorship sessions for youth</li>
+          <li>Awareness and sensitization on the value of education</li>
+          <li>Education sponsorships and bursaries for needy students</li>
+          <li>School supplies and materials distribution</li>
+          <li>Support for refugee and displaced children's access to schooling</li>
+          <li>Literacy and numeracy programs for adults</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prog-detail reveal">
+      <div class="prog-sidebar">
+        <div class="big-icon">✂️</div>
+        <span class="tag">Skills Development</span>
+        <h2>Vocational Skills Training</h2>
+        <div class="stats"><strong>60+</strong><span>Women from Bidi Bidi & Palorinya trained</span></div>
+      </div>
+      <div class="prog-body">
+        <p>Vocational skills training empowers women and girls to earn a sustainable income. With support from Penny Appeal UK and Action Against Hunger (ACF/WFP), Ravasa Foundation supported over 200 girls in accessing vocational training and skills development between 2017 and 2023.</p>
+        <p>At least 60 women from Bidi Bidi and Palorinya refugee settlements accessed skills training in hairdressing, baking, tailoring, and sustainable agriculture — giving them tools to build dignified, independent livelihoods.</p>
+        <h3>Key Activities</h3>
+        <ul class="activity-list">
+          <li>Hairdressing and beauty skills training</li>
+          <li>Baking and food processing training</li>
+          <li>Tailoring and garment making courses</li>
+          <li>Sustainable agriculture as a vocational skill</li>
+          <li>Business development and marketing support</li>
+          <li>Start-up kits and equipment for graduates</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prog-detail reverse reveal">
+      <div class="prog-sidebar">
+        <div class="big-icon">💡</div>
+        <span class="tag">Financial Empowerment</span>
+        <h2>Entrepreneurship & Finance</h2>
+      </div>
+      <div class="prog-body">
+        <p>Economic empowerment starts with financial literacy. Ravasa Foundation builds capacity in micro-financing, savings culture, and entrepreneurship — especially among women — to create sustainable income-generating opportunities.</p>
+        <p>We work with savings groups, cooperatives, and individual entrepreneurs to build the skills, knowledge, and networks they need to thrive in the local economy.</p>
+        <h3>Key Activities</h3>
+        <ul class="activity-list">
+          <li>Micro-financing capacity building workshops</li>
+          <li>Village Savings and Loan Association (VSLA) formation</li>
+          <li>Financial literacy and record-keeping training</li>
+          <li>Business plan development support</li>
+          <li>Market linkages and trade fair participation</li>
+          <li>Mentorship from established local entrepreneurs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prog-detail reveal">
+      <div class="prog-sidebar">
+        <div class="big-icon">🏥</div>
+        <span class="tag">Health</span>
+        <h2>Health & Sanitation</h2>
+      </div>
+      <div class="prog-body">
+        <p>Good health is a human right. Ravasa Foundation promotes health awareness and improved sanitation using the WASH (Water, Sanitation, and Hygiene) concept. This program gained critical importance during the COVID-19 pandemic and continues to protect communities today.</p>
+        <p>We also focus on nutrition, maternal health, and disease prevention — working in close collaboration with local health facilities to extend outreach to underserved populations.</p>
+        <h3>Key Activities</h3>
+        <ul class="activity-list">
+          <li>WASH awareness and sensitization campaigns</li>
+          <li>Hygiene promotion in schools and communities</li>
+          <li>COVID-19 prevention and response (from 2019)</li>
+          <li>Maternal and child health education</li>
+          <li>Nutrition programs for vulnerable households</li>
+          <li>Health outreach and mobile clinic support</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prog-detail reverse reveal">
+      <div class="prog-sidebar">
+        <div class="big-icon">🌿</div>
+        <span class="tag">Environment</span>
+        <h2>Environmental Conservation</h2>
+      </div>
+      <div class="prog-body">
+        <p>We believe that human development and environmental sustainability must go hand in hand. Ravasa Foundation promotes environmental protection and conservation as a core pillar of all our work, integrating green practices into every program.</p>
+        <p>From tree planting to sustainable land management, we help communities understand and act on the link between healthy ecosystems and healthy livelihoods.</p>
+        <h3>Key Activities</h3>
+        <ul class="activity-list">
+          <li>Community tree planting and reforestation campaigns</li>
+          <li>Environmental awareness and sensitization</li>
+          <li>Sustainable land use and agroforestry training</li>
+          <li>Plastic waste management campaigns</li>
+          <li>Water source protection initiatives</li>
+          <li>Climate change adaptation training</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prog-detail reveal">
+      <div class="prog-sidebar">
+        <div class="big-icon">📣</div>
+        <span class="tag">Advocacy</span>
+        <h2>Advocacy & Rights</h2>
+      </div>
+      <div class="prog-body">
+        <p>Ravasa Foundation believes in the power of advocacy to create lasting systemic change. We amplify the voices of the most marginalized — refugees, women, children, and the elderly — connecting them with the rights, services, and opportunities they deserve.</p>
+        <h3>Key Activities</h3>
+        <ul class="activity-list">
+          <li>Rights awareness and civic education</li>
+          <li>Community dialogue and mediation</li>
+          <li>Policy engagement and representation</li>
+          <li>Protection of refugee and IDP rights</li>
+          <li>Gender-based violence prevention and response</li>
+          <li>Child protection awareness programs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prog-detail reverse reveal">
+      <div class="prog-sidebar">
+        <div class="big-icon">🍽️</div>
+        <span class="tag">Emergency Response</span>
+        <h2>Emergency Response & Food Drives</h2>
+      </div>
+      <div class="prog-body">
+        <p>When disaster strikes, Ravasa Foundation responds. Our emergency response program provides immediate food relief, community mobilization, and coordinated emergency services to families and communities in crisis.</p>
+        <p>We have conducted multiple food drives and emergency distributions for famine-affected, displaced, and vulnerable families across the West Nile region — working with international partners to scale our reach.</p>
+        <h3>Key Activities</h3>
+        <ul class="activity-list">
+          <li>Emergency food package distributions</li>
+          <li>Community mobilization during crises</li>
+          <li>Non-food item (NFI) distribution</li>
+          <li>Coordination with OPM, WFP, and UN agencies</li>
+          <li>Early warning and disaster preparedness training</li>
+          <li>Post-emergency recovery support</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OPM HIGHLIGHT -->
+<div style="padding: 0 0 100px;">
+  <div class="opm-highlight reveal">
+    <div>
+      <span class="section-label" style="color:var(--green-light)">Strategic Partnership</span>
+      <h2>Working With the Office of the Prime Minister</h2>
+      <p>Ravasa Foundation has over six years of experience implementing projects supported by the Office of the Prime Minister (OPM) Private. This partnership has enabled us to scale our programs and reach thousands of beneficiaries across the West Nile region.</p>
+      <div style="margin-top:28px;"><a class="btn btn-white" href="get-involved.html">Partner With Us</a></div>
+    </div>
+    <div class="opm-stats">
+      <div class="opm-stat"><strong>80+</strong><span>Interns supported including 62 females in agriculture practices</span></div>
+      <div class="opm-stat"><strong>120</strong><span>Women improving livelihoods through sustainable vegetable growing</span></div>
+      <div class="opm-stat"><strong>6+ Yrs</strong><span>Implementing OPM-supported projects across West Nile</span></div>
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="main.js"></script>
+<script>renderNav('Programs'); renderFooter();</script>
+</body>
+</html>

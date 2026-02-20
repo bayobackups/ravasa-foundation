@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Support Ravasa Foundation — Donate, volunteer, or partner with us to change lives in Uganda.">
+<title>Get Involved – Ravasa Foundation</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* WAYS TO HELP */
+.ways { background: var(--white); }
+.ways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+.way-card { border-radius: 24px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s; }
+.way-card:hover { transform: translateY(-4px); box-shadow: 0 20px 56px rgba(0,0,0,0.1); }
+.way-header { padding: 40px 36px 32px; }
+.way-icon { font-size: 2.8rem; margin-bottom: 16px; }
+.way-card h3 { font-size: 1.4rem; color: var(--dark); margin-bottom: 10px; }
+.way-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
+.way-card.primary .way-header { background: var(--green); }
+.way-card.primary h3 { color: var(--white); }
+.way-card.primary p { color: rgba(255,255,255,0.7); }
+.way-body { padding: 28px 36px 36px; }
+.way-card.primary .way-body { background: var(--green); border-top: 1px solid rgba(255,255,255,0.15); }
+.amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+.amount-btn { background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 12px 8px; text-align: center; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); color: var(--white); font-weight: 700; font-size: 0.95rem; }
+.amount-btn:hover, .amount-btn.selected { background: var(--white); color: var(--purple); border-color: var(--white); }
+.custom-input { width: 100%; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 12px 16px; color: var(--white); font-family: var(--font-body); font-size: 0.95rem; margin-bottom: 16px; outline: none; }
+.custom-input::placeholder { color: rgba(255,255,255,0.4); }
+.custom-input:focus { border-color: rgba(255,255,255,0.6); }
+.donate-submit { width: 100%; background: var(--white); color: var(--green); border: none; padding: 14px; border-radius: 50px; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.donate-submit:hover { background: var(--green-light); color: var(--white); }
+
+.volunteer-steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+.vstep { display: flex; align-items: flex-start; gap: 14px; }
+.vstep-num { width: 32px; height: 32px; border-radius: 50%; background: var(--green-pale); color: var(--green-mid); font-weight: 700; font-size: 0.85rem; display: grid; place-items: center; flex-shrink: 0; }
+.vstep p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin: 0; padding-top: 4px; }
+.partner-points { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.ppoint { display: flex; gap: 10px; align-items: flex-start; font-size: 0.9rem; color: var(--muted); }
+.ppoint::before { content: '✓'; color: var(--green-mid); font-weight: 700; flex-shrink: 0; }
+
+/* IN-KIND */
+.inkind { background: var(--green-pale); }
+.inkind-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 40px; }
+.inkind-item { background: var(--white); border-radius: 16px; padding: 24px; text-align: center; border: 1px solid var(--border); }
+.inkind-item .icon { font-size: 2rem; margin-bottom: 12px; }
+.inkind-item h4 { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.inkind-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+/* IMPACT OF DONATION */
+.donation-impact { background: var(--dark); }
+.di-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 48px; }
+.di-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 32px; text-align: center; transition: background 0.3s; }
+.di-card:hover { background: rgba(74,172,99,0.12); }
+.di-amount { font-family: var(--font-brand); font-size: 1.8rem; font-weight: 900; color: var(--green-light); margin-bottom: 12px; }
+.di-card p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+/* VOLUNTEER FORM */
+.vol-form { background: var(--off-white); }
+.form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.2s; appearance: none;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--green-mid); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-box { background: var(--white); border-radius: 24px; padding: 48px; border: 1px solid var(--border); }
+.form-header { margin-bottom: 32px; }
+.form-header h3 { font-size: 1.5rem; color: var(--dark); margin-bottom: 8px; }
+.form-header p { font-size: 0.9rem; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .ways-grid { grid-template-columns: 1fr; }
+  .form-2col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,0.55)">Get Involved</span></div>
+    <h1 class="anim-1">Get Involved &<br>Support Our Work</h1>
+    <p class="anim-2">There are many ways to support Ravasa Foundation — whether through donations, volunteering your time, or partnering with us to extend our reach across Uganda.</p>
+  </div>
+</div>
+
+<!-- 3 WAYS -->
+<section class="ways" id="donate">
+  <div class="reveal">
+    <span class="section-label">How to Help</span>
+    <h2 class="section-title">Three Ways to Make<br>a Difference</h2>
+  </div>
+  <div class="ways-grid">
+
+    <!-- DONATE -->
+    <div class="way-card primary reveal">
+      <div class="way-header">
+        <div class="way-icon">❤️</div>
+        <h3>Donate</h3>
+        <p>Your financial contribution directly funds our programs — from food distributions to skills training and agricultural support.</p>
+      </div>
+      <div class="way-body">
+        <div class="amount-grid">
+          <button class="amount-btn" onclick="selectAmount(this, '50')">$50</button>
+          <button class="amount-btn selected" onclick="selectAmount(this, '100')">$100</button>
+          <button class="amount-btn" onclick="selectAmount(this, '250')">$250</button>
+          <button class="amount-btn" onclick="selectAmount(this, '500')">$500</button>
+          <button class="amount-btn" onclick="selectAmount(this, '1000')">$1,000</button>
+          <button class="amount-btn" onclick="selectAmount(this, 'custom')">Custom</button>
+        </div>
+        <input class="custom-input" id="custom-amount" type="text" placeholder="Enter custom amount (USD)" style="display:none">
+        <button class="donate-submit" onclick="handleDonate()">Donate Now →</button>
+      </div>
+    </div>
+
+    <!-- VOLUNTEER -->
+    <div class="way-card reveal reveal-delay-1" id="volunteer">
+      <div class="way-header" style="background: var(--off-white);">
+        <div class="way-icon">🙌</div>
+        <h3>Volunteer</h3>
+        <p>Share your skills, time, and energy with communities that need you most. We welcome volunteers in all areas.</p>
+      </div>
+      <div class="way-body">
+        <div class="volunteer-steps">
+          <div class="vstep"><div class="vstep-num">1</div><p>Fill out our volunteer application form below</p></div>
+          <div class="vstep"><div class="vstep-num">2</div><p>Our team will review and contact you within 5 business days</p></div>
+          <div class="vstep"><div class="vstep-num">3</div><p>Onboarding, orientation, and field placement</p></div>
+        </div>
+        <a class="btn btn-primary" href="#volunteer-form">Apply to Volunteer →</a>
+      </div>
+    </div>
+
+    <!-- PARTNER -->
+    <div class="way-card reveal reveal-delay-2" id="partner">
+      <div class="way-header" style="background: var(--off-white);">
+        <div class="way-icon">🤝</div>
+        <h3>Partner With Us</h3>
+        <p>Organizations, businesses, and institutions can partner with Ravasa Foundation to amplify impact at scale.</p>
+      </div>
+      <div class="way-body">
+        <div class="partner-points">
+          <div class="ppoint">Co-design and implement community programs</div>
+          <div class="ppoint">Provide technical expertise and training support</div>
+          <div class="ppoint">Fund specific programs or projects</div>
+          <div class="ppoint">In-kind donations of goods and equipment</div>
+          <div class="ppoint">Media, advocacy, and visibility support</div>
+        </div>
+        <a class="btn btn-outline" href="contact.html">Discuss Partnership →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- IMPACT OF DONATION -->
+<section class="donation-impact">
+  <div class="reveal">
+    <span class="section-label">Your Gift in Action</span>
+    <h2 class="section-title light">What Your Donation Can Do</h2>
+    <p class="section-sub light">Every dollar contributes directly to programs that change lives. Here is what different amounts can achieve.</p>
+  </div>
+  <div class="di-grid">
+    <div class="di-card reveal"><div class="di-amount">$25</div><p>Provides a month's supply of seeds for one family's kitchen garden</p></div>
+    <div class="di-card reveal reveal-delay-1"><div class="di-amount">$50</div><p>Funds a full day of community health awareness and WASH training</p></div>
+    <div class="di-card reveal reveal-delay-2"><div class="di-amount">$100</div><p>Provides an emergency food package for a family of five for one month</p></div>
+    <div class="di-card reveal"><div class="di-amount">$250</div><p>Covers vocational skills training materials for one girl or woman</p></div>
+    <div class="di-card reveal reveal-delay-1"><div class="di-amount">$500</div><p>Supports an education sponsorship for one student for a full school term</p></div>
+    <div class="di-card reveal reveal-delay-2"><div class="di-amount">$1,000</div><p>Funds an entire vocational training cohort of 10 women for one month</p></div>
+  </div>
+</section>
+
+<!-- IN-KIND DONATIONS -->
+<section class="inkind">
+  <div class="reveal">
+    <span class="section-label">In-Kind Support</span>
+    <h2 class="section-title">We Also Welcome<br>In-Kind Donations</h2>
+    <p class="section-sub">Beyond financial contributions, we gratefully accept goods and services that directly support our programs.</p>
+  </div>
+  <div class="inkind-grid">
+    <div class="inkind-item reveal"><div class="icon">🌾</div><h4>Food & Nutrition</h4><p>Non-perishable food items, staples, and nutritional supplements</p></div>
+    <div class="inkind-item reveal reveal-delay-1"><div class="icon">📚</div><h4>School Supplies</h4><p>Books, stationery, bags, and learning materials for students</p></div>
+    <div class="inkind-item reveal reveal-delay-2"><div class="icon">🧵</div><h4>Sewing Equipment</h4><p>Sewing machines, fabric, and tailoring tools for skills training</p></div>
+    <div class="inkind-item reveal"><div class="icon">🌱</div><h4>Agricultural Inputs</h4><p>Seeds, tools, fertilizers, and irrigation equipment</p></div>
+    <div class="inkind-item reveal reveal-delay-1"><div class="icon">💊</div><h4>Medical Supplies</h4><p>Basic medicines, hygiene kits, and first aid supplies</p></div>
+    <div class="inkind-item reveal reveal-delay-2"><div class="icon">💻</div><h4>Technology</h4><p>Computers, tablets, and communication equipment</p></div>
+  </div>
+  <div style="text-align:center; margin-top:40px;" class="reveal">
+    <p style="color:var(--muted); margin-bottom:16px;">To arrange an in-kind donation, please contact us directly.</p>
+    <a class="btn btn-outline" href="contact.html">Contact Us to Donate In-Kind</a>
+  </div>
+</section>
+
+<!-- VOLUNTEER / CONTACT FORM -->
+<section class="vol-form" id="volunteer-form">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;" class="form-2col-outer">
+    <div class="reveal">
+      <span class="section-label">Join Our Team</span>
+      <h2 class="section-title">Volunteer Application</h2>
+      <p class="section-sub" style="margin-bottom:28px;">We welcome individuals with any skills — from professionals to students. Every contribution matters.</p>
+      <div style="background:var(--green-pale); border-radius:16px; padding:28px;">
+        <h4 style="font-size:0.85rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin-bottom:14px;">Volunteer Opportunities</h4>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+          <li style="display:flex;gap:10px;font-size:0.9rem;color:var(--muted);"><span style="color:var(--green-mid);font-weight:700;">→</span> Field program support</li>
+          <li style="display:flex;gap:10px;font-size:0.9rem;color:var(--muted);"><span style="color:var(--green-mid);font-weight:700;">→</span> Skills training facilitation</li>
+          <li style="display:flex;gap:10px;font-size:0.9rem;color:var(--muted);"><span style="color:var(--green-mid);font-weight:700;">→</span> Community health outreach</li>
+          <li style="display:flex;gap:10px;font-size:0.9rem;color:var(--muted);"><span style="color:var(--green-mid);font-weight:700;">→</span> Communications & design</li>
+          <li style="display:flex;gap:10px;font-size:0.9rem;color:var(--muted);"><span style="color:var(--green-mid);font-weight:700;">→</span> Fundraising & partnerships</li>
+          <li style="display:flex;gap:10px;font-size:0.9rem;color:var(--muted);"><span style="color:var(--green-mid);font-weight:700;">→</span> Research & monitoring</li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-box reveal reveal-delay-2">
+      <div class="form-header">
+        <h3>Apply to Volunteer</h3>
+        <p>Fill in the form below and our team will get back to you within 5 working days.</p>
+      </div>
+      <div class="form-2col">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe"></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+256 ..."></div>
+      <div class="form-group"><label>Nationality / Location</label><input type="text" placeholder="e.g. Ugandan, based in Kampala"></div>
+      <div class="form-group"><label>Area of Interest</label>
+        <select>
+          <option>Field Program Support</option>
+          <option>Skills Training Facilitation</option>
+          <option>Health Outreach</option>
+          <option>Communications & Design</option>
+          <option>Fundraising & Partnerships</option>
+          <option>Research & Monitoring</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Availability</label>
+        <select>
+          <option>Full-time (long-term)</option>
+          <option>Part-time (ongoing)</option>
+          <option>Short-term placement</option>
+          <option>Specific event/project only</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Tell Us About Yourself</label><textarea placeholder="Briefly describe your background, skills, and why you want to volunteer with Ravasa Foundation..."></textarea></div>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="handleVolunteer(this)">Submit Application →</button>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="main.js"></script>
+<script>
+renderNav('');
+renderFooter();
+
+let selectedAmount = '100';
+function selectAmount(btn, val) {
+  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedAmount = val;
+  const ci = document.getElementById('custom-amount');
+  ci.style.display = val === 'custom' ? 'block' : 'none';
+}
+function handleDonate() {
+  alert('Thank you for your generosity! To complete your donation, please contact us at jijarajab@gmail.com or call +256 777 464 898. We will guide you through the payment process.');
+}
+function handleVolunteer(btn) {
+  btn.textContent = '✓ Application Submitted!';
+  btn.style.background = 'var(--green-light)';
+  setTimeout(() => { btn.textContent = 'Submit Application →'; btn.style.background = ''; }, 3500);
+}
+</script>
+</body>
+</html>

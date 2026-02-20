@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contact Ravasa Foundation — Get in touch with our team in Arua, Uganda.">
+<title>Contact Us – Ravasa Foundation</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* CONTACT LAYOUT */
+.contact-main { background: var(--off-white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 56px; align-items: start; }
+
+/* INFO SIDE */
+.contact-info { display: flex; flex-direction: column; gap: 0; }
+.ci-item { display: flex; gap: 18px; padding: 28px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+.ci-item:last-of-type { border-bottom: none; }
+.ci-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--green-pale); display: grid; place-items: center; font-size: 1.3rem; flex-shrink: 0; }
+.ci-item h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-mid); margin-bottom: 6px; }
+.ci-item p, .ci-item a { font-size: 0.92rem; color: var(--muted); text-decoration: none; line-height: 1.7; display: block; transition: color 0.2s; }
+.ci-item a:hover { color: var(--green-mid); }
+
+/* FORM SIDE */
+.contact-form-box { background: var(--white); border-radius: 28px; padding: 48px; border: 1px solid var(--border); }
+.form-header { margin-bottom: 36px; }
+.form-header h3 { font-size: 1.6rem; color: var(--dark); margin-bottom: 8px; }
+.form-header p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+.form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; background: var(--off-white); border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 16px; color: var(--text); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.2s, background 0.2s; appearance: none;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--purple-mid); background: var(--white); }
+.form-group textarea { resize: vertical; min-height: 130px; }
+.form-submit { width: 100%; background: var(--green-mid); color: var(--white); border: none; padding: 15px; border-radius: 50px; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 4px; }
+.form-submit:hover { background: var(--green-light); transform: translateY(-2px); }
+
+/* MAP PLACEHOLDER */
+.map-section { background: var(--white); }
+.map-placeholder { background: var(--green-pale); border-radius: 24px; height: 380px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; border: 2px dashed rgba(45,138,69,0.25); }
+.map-placeholder .icon { font-size: 3rem; }
+.map-placeholder h3 { font-size: 1.1rem; color: var(--dark); }
+.map-placeholder p { font-size: 0.88rem; color: var(--muted); text-align: center; max-width: 320px; line-height: 1.65; }
+.map-placeholder a { display: inline-flex; align-items: center; gap: 6px; color: var(--green-mid); font-weight: 600; font-size: 0.9rem; text-decoration: none; margin-top: 4px; }
+.map-placeholder a:hover { color: var(--green-light); }
+
+/* OFFICE HOURS */
+.office-hours { background: var(--green); padding: 64px 6%; }
+.oh-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 40px; }
+.oh-card { background: rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; }
+.oh-card h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-light); margin-bottom: 12px; }
+.oh-card p { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.7; }
+
+/* FAQ */
+.faq { background: var(--off-white); }
+.faq-list { display: flex; flex-direction: column; gap: 0; max-width: 800px; margin: 40px auto 0; }
+.faq-item { background: var(--white); border-radius: 14px; margin-bottom: 10px; border: 1px solid var(--border); overflow: hidden; }
+.faq-q { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px; cursor: pointer; }
+.faq-q h4 { font-size: 0.97rem; font-weight: 600; color: var(--dark); }
+.faq-q .arrow { font-size: 1.2rem; color: var(--green-mid); transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.open .arrow { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.faq-a-inner { padding: 0 28px 22px; font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-2col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,0.55)">Contact</span></div>
+    <h1 class="anim-1">Get in Touch</h1>
+    <p class="anim-2">We would love to hear from you — whether you want to donate, volunteer, partner, or simply learn more about our work in Uganda's West Nile region.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTACT -->
+<section class="contact-main">
+  <div class="contact-grid">
+
+    <!-- INFO PANEL -->
+    <div class="contact-info reveal">
+      <div class="ci-item">
+        <div class="ci-icon">📍</div>
+        <div>
+          <h4>Physical Address</h4>
+          <p>Plot No. 25, Duuka Road<br>Market Cell, Oli River Division<br>Arua District, Uganda</p>
+          <p style="margin-top:6px;"><strong>P.O. Box:</strong> 685, Arua</p>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">📞</div>
+        <div>
+          <h4>Phone Numbers</h4>
+          <a href="tel:+256777464898">+256 777 464 898</a>
+          <a href="tel:+256702463898">+256 702 463 898</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">✉️</div>
+        <div>
+          <h4>Email Address</h4>
+          <a href="mailto:jijarajab@gmail.com">jijarajab@gmail.com</a>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">🏛️</div>
+        <div>
+          <h4>Registration</h4>
+          <p>NGO Reg. No: INDR165525831NB</p>
+          <p>Registered: 29th August 2023</p>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">🗺️</div>
+        <div>
+          <h4>Area of Operation</h4>
+          <p>West Nile Region: Adjumani, Arua,<br>Koboko, Moyo, Panyimur, Yumbe</p>
+          <p style="margin-top:6px;">Nationwide (all Uganda)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM PANEL -->
+    <div class="contact-form-box reveal reveal-delay-2">
+      <div class="form-header">
+        <h3>Send Us a Message</h3>
+        <p>Fill in the form below and one of our team members will respond within 2–3 working days.</p>
+      </div>
+      <div class="form-2col">
+        <div class="form-group"><label>First Name *</label><input type="text" placeholder="Your first name"></div>
+        <div class="form-group"><label>Last Name *</label><input type="text" placeholder="Your last name"></div>
+      </div>
+      <div class="form-group"><label>Email Address *</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+256 ..."></div>
+      <div class="form-group"><label>Organization (if applicable)</label><input type="text" placeholder="Your organization or institution"></div>
+      <div class="form-group"><label>Purpose of Contact *</label>
+        <select>
+          <option value="">— Please select —</option>
+          <option>I want to donate</option>
+          <option>I want to volunteer</option>
+          <option>Partnership / Collaboration</option>
+          <option>Funding / Grant opportunity</option>
+          <option>Media / Press inquiry</option>
+          <option>General information</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message *</label><textarea placeholder="Tell us more about your inquiry or how you would like to get involved..."></textarea></div>
+      <div class="form-group" style="display:flex; align-items:flex-start; gap:10px; margin-bottom:8px;">
+        <input type="checkbox" id="consent" style="width:auto; margin-top:4px;">
+        <label for="consent" style="text-transform:none; letter-spacing:0; font-size:0.85rem; font-weight:400; line-height:1.6; color:var(--muted);">I consent to Ravasa Foundation storing my details and using them to respond to my inquiry.</label>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(this)">
+        <span>Send Message</span>
+        <span>→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="reveal">
+    <span class="section-label">Find Us</span>
+    <h2 class="section-title">Our Location</h2>
+  </div>
+  <div class="map-placeholder reveal reveal-delay-2" style="margin-top:32px;">
+    <div class="icon">📍</div>
+    <h3>Ravasa Foundation Office</h3>
+    <p>Plot No. 25, Duuka Road, Market Cell, Oli River Division, Arua District, Uganda</p>
+    <a href="https://maps.google.com/?q=Arua,Uganda" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+  </div>
+</section>
+
+<!-- OFFICE HOURS -->
+<div class="office-hours">
+  <span class="section-label" style="color:var(--green-light)">When We're Available</span>
+  <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.4rem); color:var(--white); margin-top:8px;">Office Hours</h2>
+  <div class="oh-grid">
+    <div class="oh-card"><h4>Monday – Friday</h4><p>8:00 AM – 5:00 PM EAT<br>Main office operations</p></div>
+    <div class="oh-card"><h4>Saturday</h4><p>9:00 AM – 1:00 PM EAT<br>Limited availability</p></div>
+    <div class="oh-card"><h4>Sunday & Holidays</h4><p>Closed<br>Emergency contact via phone</p></div>
+    <div class="oh-card"><h4>Response Time</h4><p>Email: 2–3 working days<br>Phone: During office hours</p></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="reveal" style="text-align:center; margin-bottom:0;">
+    <span class="section-label">Common Questions</span>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>How can I donate to Ravasa Foundation?</h4><span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">You can donate by contacting us directly via email at jijarajab@gmail.com or calling +256 777 464 898. Our team will guide you through the available payment options including mobile money, bank transfer, or in-person donation. You can also use our Get Involved page to express your interest.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>Can international donors or organizations support Ravasa Foundation?</h4><span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes, absolutely. We welcome support from international donors, foundations, NGOs, and institutions. We have previous experience working with UK-based and international partners and can discuss formal partnership agreements, grants, and co-funding arrangements. Please reach out to us to discuss how we can work together.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>Can I volunteer remotely or do I have to be in Uganda?</h4><span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">We welcome both on-the-ground and remote volunteers. Remote volunteers can support us with communications, writing, graphic design, fundraising, research, and administrative work. On-site volunteers work directly with our field teams in West Nile. Please fill out the volunteer application form on our Get Involved page.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>What communities does Ravasa Foundation serve?</h4><span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">We primarily serve vulnerable communities in Uganda's West Nile region, including refugees, refugee host communities, internally displaced persons, women, youth, children, elderly, and the rural poor across Adjumani, Arua, Koboko, Moyo, Panyimur, and Yumbe districts. As a nationally registered NGO, we also have the mandate to operate across Uganda.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>How does Ravasa Foundation ensure accountability and transparency?</h4><span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">RAVASA FOUNDATION is guided by a governance structure that includes a Board of Directors responsible for organizational accountability and oversight. We maintain proper financial records, produce reports for our donors and partners, and operate within Uganda's NGO regulatory framework. Community integrity is one of our five core values.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>Are you currently accepting applications for programs or training?</h4><span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Program enrollment varies depending on current funding and capacity. Please check our News & Announcements page for open calls, or contact us directly to find out about current and upcoming programs in your area. We encourage community members and organizations to reach out to discuss collaboration.</div></div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="main.js"></script>
+<script>
+renderNav('Contact');
+renderFooter();
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const ans = item.querySelector('.faq-a');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-a').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    ans.style.maxHeight = ans.scrollHeight + 'px';
+  }
+}
+
+function handleSubmit(btn) {
+  const checked = document.getElementById('consent').checked;
+  if (!checked) { alert('Please tick the consent checkbox before submitting.'); return; }
+  btn.innerHTML = '<span>✓ Message Sent!</span>';
+  btn.style.background = 'var(--green-light)';
+  setTimeout(() => { btn.innerHTML = '<span>Send Message</span><span>→</span>'; btn.style.background = ''; }, 3500);
+}
+</script>
+</body>
+</html>
