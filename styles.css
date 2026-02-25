@@ -3,7 +3,13 @@
    Brand: Green + White + Purple accent
    ═══════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600&display=swap');
+/* ─── Typography System ───
+   Display:  Fraunces       — warm, editorial, emotional serif (headlines)
+   UI/Brand: Bricolage Grotesque — distinctive grotesque (nav, labels, brand name)
+   Body:     Plus Jakarta Sans  — refined geometric sans (body, UI text)
+   Script:   Dancing Script     — brand tagline only
+   ─────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Nunito:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Dancing+Script:wght@600;700&display=swap');
 
 :root {
   --green:        #1e7a35;
@@ -21,21 +27,22 @@
   --white:        #ffffff;
   --off-white:    #f6faf7;
   --border:       rgba(0,0,0,0.08);
-  --font-brand:   'Montserrat', sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-brand:   'Bricolage Grotesque', sans-serif;
   --font-script:  'Dancing Script', cursive;
-  --font-body:    'Inter', sans-serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); color: var(--text); background: var(--off-white); overflow-x: hidden; }
+body { font-family: var(--font-body); color: var(--text); background: var(--off-white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-h1, h2 { font-family: var(--font-brand); line-height: 1.08; font-weight: 800; }
-h3, h4 { font-family: var(--font-brand); font-weight: 700; line-height: 1.15; }
-p { line-height: 1.78; }
+h1, h2 { font-family: var(--font-display); line-height: 1.05; font-weight: 900; letter-spacing: -0.02em; }
+h3, h4 { font-family: var(--font-brand); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+p { line-height: 1.82; font-size: 1.02rem; }
 
 .section-label {
-  font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
+  font-family: var(--font-brand); font-size: 0.68rem; font-weight: 600;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--purple-mid); margin-bottom: 12px;
   display: flex; align-items: center; gap: 10px;
@@ -44,7 +51,7 @@ p { line-height: 1.78; }
   content: ''; display: inline-block; width: 24px; height: 2px;
   background: var(--purple-mid); border-radius: 2px; flex-shrink: 0;
 }
-.section-title { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 800; color: var(--dark); margin-bottom: 18px; letter-spacing: -0.02em; }
+.section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--dark); margin-bottom: 18px; letter-spacing: -0.025em; line-height: 1.05; }
 .section-title.light { color: var(--white); }
 .section-sub { font-size: 1.04rem; color: var(--muted); max-width: 600px; line-height: 1.82; }
 .section-sub.light { color: rgba(255,255,255,0.62); }
@@ -60,14 +67,20 @@ nav {
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .nav-logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
-.nav-logo-mark { width: 46px; height: 46px; flex-shrink: 0; }
+.nav-logo-mark {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: var(--green-mid);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 6px;
+}
 .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
-.nav-logo-text .brand-name { font-family: var(--font-brand); font-weight: 900; font-size: 0.78rem; letter-spacing: 0.13em; color: var(--white); text-transform: uppercase; line-height: 1.1; }
+.nav-logo-text .brand-name { font-family: var(--font-brand); font-weight: 800; font-size: 0.82rem; letter-spacing: 0.1em; color: var(--white); text-transform: uppercase; line-height: 1.1; }
 .nav-logo-text .brand-tagline { font-family: var(--font-script); font-size: 0.92rem; color: var(--green-light); font-weight: 600; margin-top: 3px; }
 .nav-links { display: flex; gap: 30px; list-style: none; }
-.nav-links a { color: rgba(255,255,255,0.68); text-decoration: none; font-size: 0.84rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; padding-bottom: 3px; border-bottom: 2px solid transparent; font-family: var(--font-body); }
+.nav-links a { color: rgba(255,255,255,0.68); text-decoration: none; font-size: 0.84rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; padding-bottom: 3px; border-bottom: 2px solid transparent; font-family: var(--font-brand); }
 .nav-links a:hover, .nav-links a.active { color: var(--white); border-bottom-color: var(--purple-light); }
-.nav-cta { background: linear-gradient(135deg, var(--purple), var(--purple-mid)); color: var(--white); padding: 9px 22px; border-radius: 6px; font-weight: 600; font-size: 0.84rem; letter-spacing: 0.05em; text-decoration: none; transition: all 0.25s; white-space: nowrap; font-family: var(--font-body); box-shadow: 0 4px 16px rgba(91,45,142,0.35); }
+.nav-cta { background: linear-gradient(135deg, var(--purple), var(--purple-mid)); color: var(--white); padding: 9px 22px; border-radius: 6px; font-weight: 600; font-size: 0.84rem; letter-spacing: 0.04em; text-decoration: none; transition: all 0.25s; white-space: nowrap; font-family: var(--font-brand); box-shadow: 0 4px 16px rgba(91,45,142,0.35); }
 .nav-cta:hover { background: linear-gradient(135deg, var(--purple-mid), var(--purple-light)); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(91,45,142,0.45); }
 
 .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -84,7 +97,7 @@ nav {
 .page-hero::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--green-mid), var(--purple), var(--purple-mid)); }
 .page-hero-pattern { position: absolute; inset: 0; opacity: 0.035; background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%); background-size: 28px 28px; }
 .page-hero-content { position: relative; z-index: 2; max-width: 720px; }
-.page-hero h1 { font-size: clamp(2.6rem, 5.5vw, 4.2rem); color: var(--white); font-weight: 900; margin-bottom: 18px; letter-spacing: -0.02em; }
+.page-hero h1 { font-family: var(--font-display); font-size: clamp(2.6rem, 5.5vw, 4.4rem); color: var(--white); font-weight: 900; margin-bottom: 18px; letter-spacing: -0.03em; line-height: 1.03; }
 .page-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.82; }
 .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 22px; }
 .breadcrumb a { font-size: 0.78rem; color: var(--purple-light); text-decoration: none; font-weight: 500; }
@@ -128,7 +141,7 @@ nav {
 footer { background: var(--dark); padding: 72px 6% 32px; position: relative; }
 footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--green-mid), var(--purple), var(--purple-mid)); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
-.footer-brand-name { font-family: var(--font-brand); font-size: 0.82rem; font-weight: 900; letter-spacing: 0.13em; color: var(--white); text-transform: uppercase; display: block; margin-top: 16px; }
+.footer-brand-name { font-family: var(--font-brand); font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; color: var(--white); text-transform: uppercase; display: block; margin-top: 16px; }
 .footer-brand-tagline { font-family: var(--font-script); font-size: 1rem; color: var(--green-light); font-weight: 600; display: block; margin-top: 3px; }
 .footer-brand p { font-size: 0.86rem; color: rgba(255,255,255,0.4); line-height: 1.82; margin-top: 14px; max-width: 270px; }
 .footer-col h4 { font-family: var(--font-body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 18px; }
